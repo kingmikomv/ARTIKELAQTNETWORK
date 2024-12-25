@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('tag');
             $table->string('slug_tag');
             $table->string('color');
+            $table->integer('view_tag')->default(0);
             $table->timestamps();
         });
     }

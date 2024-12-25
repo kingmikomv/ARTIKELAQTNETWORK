@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artikel', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('banner');
-            $table->string('slug');
-            $table->text('isi');
-            $table->string('tag');
-            $table->integer('view_artikel')->default(0);
+            $table->string('menu');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('artikel');
+        Schema::dropIfExists('menu');
     }
 };

@@ -84,9 +84,9 @@ class ArtikelResource extends Resource
                     }), // Mengaktifkan HTML untuk menampilkan ikon
                 TextColumn::make('judul')
                     ->searchable()
-                    ->description(fn(Artikel $record): string => Str::limit(strip_tags($record->isi), 30))
+                    // ->description(fn(Artikel $record): string => Str::limit(strip_tags($record->isi), 30))
                     ->description(fn(Artikel $record2): string => 'Tag: ' . implode(', ', $record2->tag), position: 'above')
-                    ->description(fn(Artikel $record3): string => 'Uploaded At: ' .  $record3->created_at, position: 'below'),
+                    ->description(fn(Artikel $record3): string => 'Viewer: ' .  $record3->view_artikel." | Created At: ". $record3->created_at , position: 'below'),
 
 
             ])
@@ -95,6 +95,7 @@ class ArtikelResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\DeleteAction::make(),
 
             ])

@@ -55,7 +55,8 @@ class TagResource extends Resource
                 TextColumn::make('tag')
                     ->label('Tag')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->description(fn(Tag $record3): string => 'Viewer: ' .  $record3->view_tag." | Created At: ". $record3->created_at , position: 'below'),
 
                 ColorColumn::make('color')
                     ->label('Color')
