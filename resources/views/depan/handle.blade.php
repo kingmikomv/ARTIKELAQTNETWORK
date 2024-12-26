@@ -4,16 +4,16 @@
 <x-head />
 <body>
 
-    <x-header :categories="$categories"/>
+    <x-header :categories="$categories" :menus="$menus" :submenu="$submenu" />
   <main>
     <section class="section">
       <div class="container">
         <div class="row no-gutters-lg">
           <div class="col-12">
-            <h2 class="section-title">Categories : {{$slug_tag}}</h2>
+            <h2 class="section-title">{{$datasubmenu->judulsub ?? ''}}</h2>
           </div>
           <div class="col-lg-8 mb-5 mb-lg-0">
-            <x-kateg :artikel="$artikel"/>
+            <x-handles :datasubmenu="$datasubmenu"/>
           </div>
             <x-sidebar :randartikel="$randartikel" :categories="$categories"/>
         </div>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('menu');
             $table->string('submenu');
+            $table->string('judulsub');
             $table->longText('isi');
             $table->timestamps();
         });

@@ -34,6 +34,10 @@ class SubMenuResource extends Resource
                     })
                     ->label('Menu')
                     ->columnSpanFull(),
+                TextInput::make('judulsub')
+                    ->label('Judul Sub Menu')
+                    ->placeholder('Masukan Judul Sub Menu')
+                    ->columnSpanFull(),
                 TextInput::make('submenu')
                     ->label('Sub Menu')
                     ->placeholder('Masukan Nama Sub Menu')

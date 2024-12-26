@@ -13,11 +13,20 @@ class DepanController extends Controller
         $artikel = \App\Models\Artikel::latest()->first();
         $lt = Artikel::latest()->limit(1)->first();
         $order = Artikel::orderBy('id', 'desc')->limit(4)->get();
-
         $randartikel = Artikel::inRandomOrder()->limit(6)->get();
         $categories = Tag::all();
+        //HALAMAN
+        // Ambil semua menu
+        $menus = \App\Models\Menu::all();
 
-        return view('depan.index', compact('artikel', 'lt', 'order', 'randartikel', 'categories'));
+        $submenu =[];
+        // Ambil submenu terkait untuk setiap menu
+        foreach ($menus as $menu) {
+            $submenu[$menu->menu] = \App\Models\Submenu::where('menu', $menu->menu)->get() ?? null;
+        }
+
+        //dd($submenu);
+        return view('depan.index', compact('artikel', 'lt', 'order', 'randartikel', 'categories', 'submenu', 'menus'));
     }
     function artikel($slug)
     {
@@ -28,19 +37,52 @@ class DepanController extends Controller
         $randartikel = Artikel::inRandomOrder()->limit(6)->get();
 
         $categories = Tag::all();
+        $menus = \App\Models\Menu::all();
 
-        //dd($tags);
+        $submenu =[];
+        // Ambil submenu terkait untuk setiap menu
+        foreach ($menus as $menu) {
+            $submenu[$menu->menu] = \App\Models\Submenu::where('menu', $menu->menu)->get() ?? null;
+        }
 
-        return view('depan.artikel', compact('artikel', 'randartikel', 'categories'));
+        return view('depan.artikel', compact('artikel', 'randartikel', 'categories', 'submenu', 'menus'));
     }
     function kategori($slug_tag)
     {
         // Cari artikel di mana kolom 'tag' mengandung "Mikrotik Dasar"
         $artikel = Artikel::whereJsonContains('tag', $slug_tag)->get();
+
+        $datatag = Tag::where('tag', $slug_tag)->first();
+        $tambah = Tag::where('tag', $slug_tag)->update([
+            'view_tag' => $datatag->view_tag + 1
+        ]);
         $randartikel = Artikel::inRandomOrder()->limit(6)->get();
         $categories = Tag::all();
-        // Tampilkan hasilnya
-        //dd($artikel);
-        return view('depan.kategori', compact('artikel', 'randartikel', 'categories', 'slug_tag'));
+        $menus = \App\Models\Menu::all();
+
+        $submenu =[];
+        // Ambil submenu terkait untuk setiap menu
+        foreach ($menus as $menu) {
+            $submenu[$menu->menu] = \App\Models\Submenu::where('menu', $menu->menu)->get() ?? null;
+        }
+
+        return view('depan.kategori', compact('artikel', 'randartikel', 'categories', 'slug_tag', 'submenu', 'menus'));
+    }
+    function handle($menu, $submenu)
+    {
+        $sm = $submenu;
+        $artikel = \App\Models\Artikel::latest()->first();
+        $randartikel = Artikel::inRandomOrder()->limit(6)->get();
+        $categories = Tag::all();
+        $menus = \App\Models\Menu::all();
+        
+        $submenu =[];
+        // Ambil submenu terkait untuk setiap menu
+        foreach ($menus as $menu) {
+            $submenu[$menu->menu] = \App\Models\Submenu::where('menu', $menu->menu)->get() ?? null;
+        }
+        //dd($sm);
+       $datasubmenu = \App\Models\Submenu::where('submenu', $sm)->first();
+        return view('depan.handle', compact('artikel', 'randartikel', 'categories', 'submenu', 'menus', 'datasubmenu'));
     }
 }

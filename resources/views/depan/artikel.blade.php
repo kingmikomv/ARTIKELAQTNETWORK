@@ -13,7 +13,7 @@
             /* Set a fixed height or use auto to preserve aspect ratio */
         }
     </style>
-    <x-header />
+    <x-header :categories="$categories"/>
     <main>
         <section class="section">
             <div class="container">
