@@ -20,8 +20,8 @@
                 <div class="row no-gutters-lg">
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <article>
-                            <img loading="lazy" decoding="async" src="{{ asset('storage/' . $artikel->banner) }}" alt="Post Thumbnail"
-                                class="w-100">
+                            <img loading="lazy" decoding="async" src="{{ asset('storage/' . $artikel->banner) }}"
+                                alt="Post Thumbnail" class="w-100">
                             <ul class="post-meta mb-2 mt-4">
                                 <li>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -39,11 +39,11 @@
                                 <li>
                                     @if (!empty($artikel->tag) && is_array($artikel->tag))
                                     @foreach ($artikel->tag as $tag)
-                                        <a href="#">{{ $tag }}</a>
+                                    <a href="#">{{ $tag }}</a>
                                     @endforeach
-                                @else
+                                    @else
                                     <p>No tags available.</p>
-                                @endif
+                                    @endif
                                 </li>
                             </ul>
                             <div class="content text-left">
@@ -52,8 +52,8 @@
                         </article>
                         <div class="mt-5">
                             <div id="disqus_thread"></div>
-<script>
-    /**
+                            <script>
+                                /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
     /*
@@ -68,11 +68,12 @@
     s.setAttribute('data-timestamp', +new Date());
     (d.head || d.body).appendChild(s);
     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a
+                                    href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                         </div>
                     </div>
-                    <x-sidebar :randartikel="$randartikel" :categories="$categories"/>
+                    <x-sidebar :randartikel="$randartikel" :categories="$categories" />
                 </div>
             </div>
         </section>
@@ -87,7 +88,7 @@
 
     <!-- Main Script -->
     <script src="{{asset('assets/js/script.js')}}"></script>
-   
+
     <script id="dsq-count-scr" src="//artikel-aqtnetwork.disqus.com/count.js" async></script>
 </body>
 

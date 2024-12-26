@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-lg-10 mx-auto text-center">
           <a class="d-inline-block mb-4 pb-2" href="index.html">
-            <img loading="prelaod" decoding="async" class="img-fluid" src="images/logo-white.png" alt="Reporter Hugo">
+            <img loading="prelaod" decoding="async" class="img-fluid" src="{{asset('assets/images/ll.png')}}" alt="AQT Network" width="250px">
           </a>
           <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
             <li class="nav-item my-0"> <a class="nav-link" href="about.html">About</a></li>
