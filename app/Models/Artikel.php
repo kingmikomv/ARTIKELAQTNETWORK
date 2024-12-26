@@ -17,6 +17,6 @@ class Artikel extends Model
      public function setJudulAttribute($value)
      {
          $this->attributes['judul'] = $value;
-         $this->attributes['slug'] = Str::slug($value, '_'); // Mengubah spasi menjadi garis bawah pada slug
+         $this->attributes['slug'] = Str::slug($value, '_')."_".Str::random(6); // Mengubah spasi menjadi garis bawah pada slug
      }
 }

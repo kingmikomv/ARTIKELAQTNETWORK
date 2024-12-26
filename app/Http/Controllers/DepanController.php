@@ -14,4 +14,13 @@ class DepanController extends Controller
         $order = Artikel::orderBy('id', 'desc')->limit(4)->get();
         return view('depan.index', compact('artikel', 'lt', 'order'));
     }
+    function artikel($slug)
+    {
+        $artikel = Artikel::where('slug', $slug)->first();
+        $tambah = Artikel::where('slug', $slug)->update([
+            'view_artikel' => $artikel->view_artikel + 1
+        ]);
+        //dd($artikel);
+       return view('depan.artikel', compact('artikel'));
+    }
 }

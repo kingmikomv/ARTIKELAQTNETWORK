@@ -12,7 +12,7 @@
 
         @php
             // Clean content by removing <figure> tags first
-            $cleaned_content1 = preg_replace('/<figure.*?<\/figure>/s', '', $lt->isi);
+            $cleaned_content1 = preg_replace('/<figure.*?<\/figure>/s', '', $lt->isi ?? '');
 
             // Count words
             $word_count1 = str_word_count(strip_tags($cleaned_content1));
@@ -24,14 +24,19 @@
             $read_time1 = ceil($word_count1 / $words_per_minutes);
         @endphp
         <article class="card article-card">
-            <a href="article.html">
+            <a href="{{ route('artikel', $lt->slug) }}">
                 <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">{{ $lt->created_at }}</span>
-                        <span class="text-uppercase">{{ $read_time1 }} minute {{ $read_time1 > 1 ? 's' : '' }}
+                    <div class="post-info"> <span class="text-uppercase">{{ $lt->created_at ?? ''}}</span>
+                        <span class="text-uppercase">{{ $read_time1 }} minute{{ $read_time1 > 1 ? 's' : '' }}
                             read</span>
                     </div>
+                    @if(isset($lt->banner))
                     <img loading="lazy" decoding="async" src="{{ asset('storage/' . $lt->banner) }}" alt="Post Thumbnail"
-                        class="w-100 img-fluid">
+                    class="w-100 img-fluid">
+                    @else
+   
+@endif
+                    
                 </div>
             </a>
             <div class="card-body px-0 pb-1">
@@ -47,10 +52,10 @@
 
                     </li>
                 </ul>
-                <h2 class="h1"><a class="post-title" href="">{{ $lt->judul }}</a></h2>
-                <p class="card-text"> {!! Str::limit(preg_replace('/<figure.*?<\/figure>/s', '', $lt->isi), 300) !!}
+                <h2 class="h1"><a class="post-title" href="{{ route('artikel', $lt->slug) }}">{{ $lt->judul ?? ''}}</a></h2>
+                <p class="card-text"> {!! Str::limit(preg_replace('/<figure.*?<\/figure>/s', '', $lt->isi ?? ''), 300) !!}
                 </p>
-                <div class="content"> <a class="read-more-btn" href="">Read Full Article</a>
+                <div class="content"> <a class="read-more-btn" href="{{ route('artikel', $lt->slug) }}">Read Full Article</a>
                 </div>
             </div>
         </article>
@@ -59,7 +64,7 @@
     @foreach ($order as $item)
         @php
             // Clean content by removing <figure> tags first
-            $cleaned_content = preg_replace('/<figure.*?<\/figure>/s', '', $item->isi);
+            $cleaned_content = preg_replace('/<figure.*?<\/figure>/s', '', $item->isi) ?? '';
 
             // Count words
             $word_count = str_word_count(strip_tags($cleaned_content));
@@ -78,8 +83,8 @@
             <article class="card article-card article-card-sm h-100">
                 <a href="article.html">
                     <div class="card-image">
-                        <div class="post-info"> <span class="text-uppercase">{{ $item->created_at }}</span>
-                            <span class="text-uppercase">{{ $read_time }} minute {{ $read_time > 1 ? 's' : '' }}
+                        <div class="post-info"> <span class="text-uppercase">{{ $item->created_at ?? ''}}</span>
+                            <span class="text-uppercase">{{ $read_time }} minute{{ $read_time > 1 ? 's' : '' }}
                                 read</span>
                         </div>
                         <img loading="lazy" decoding="async" src="{{ asset('storage/' . $item->banner) }}"

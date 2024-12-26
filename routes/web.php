@@ -7,4 +7,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [DepanController::class, 'index'])->name('depan.index');
+Route::get('/', [DepanController::class, 'index'])->name('index');
+Route::get('/artikel/{slug}', [DepanController::class, 'artikel'])->name('artikel');

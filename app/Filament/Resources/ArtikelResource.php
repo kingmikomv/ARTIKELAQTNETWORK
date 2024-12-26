@@ -53,7 +53,7 @@ class ArtikelResource extends Resource
                 TextInput::make('slug')
                     ->label('Slug')
                     ->hidden()
-                    ->default(fn($get) => Str::slug($get('judul'), '-')),
+                    ->default(fn($get) => Str::slug($get('judul'), '-') . '-' . Str::random(6)),
 
                 RichEditor::make('isi')
                     ->label('Isi')
