@@ -11,15 +11,11 @@
               <div class="contact-info mb-4">
                   <div class="d-flex justify-content-center align-items-center mb-2">
                       <i class="fas fa-map-marker-alt fa-lg me-2"></i>
-                      <span>Jl. Example Raya No. 123, Kota Contoh, Indonesia</span>
-                  </div>
-                  <div class="d-flex justify-content-center align-items-center mb-2">
-                      <i class="fas fa-phone fa-lg me-2"></i>
-                      <span>+62 812 3456 7890</span>
+                      <span>Jl. Sindangkerta Arah Dongkal, Kec. Lohbener Kab. Indramayu 45252</span>
                   </div>
                   <div class="d-flex justify-content-center align-items-center">
                       <i class="fas fa-envelope fa-lg me-2"></i>
-                      <a href="mailto:info@example.com" class="text-white text-decoration-none">info@example.com</a>
+                      <a href="mailto:noc@aqtnetwork.my.id" class="text-white text-decoration-none">noc@aqtnetwork.my.id</a>
                   </div>
               </div>
 
