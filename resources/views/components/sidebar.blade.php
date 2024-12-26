@@ -49,13 +49,13 @@
         <div class="widget">
           <h2 class="section-title mb-3">Categories</h2>
           <div class="widget-body">
-            <ul class="widget-list">
+            <ul class="widget-list" >
 
               @foreach($categories as $category)
               <li>
-                  <a href="#!">
+                  <a href="{{route('kategori', $category->tag)}}" style="background-color: {{$category->color}};">
                       
-                      <span class="ml-auto">({{ $category->tag }})</span>
+                      <span class="ml-auto" >({{ $category->tag }})</span>
                   </a>
               </li>
           @endforeach

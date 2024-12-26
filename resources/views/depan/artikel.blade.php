@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-<x-head />
+<x-head-artikel :artikel="$artikel"/>
 
 <body>
     <style>

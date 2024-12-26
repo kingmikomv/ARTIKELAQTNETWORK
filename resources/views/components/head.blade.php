@@ -1,15 +1,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Reporter - HTML Blog Template</title>
+    <title>Artikel AQT Network - Harga Rakyat Kualitas Pejabat</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-    <meta name="description" content="This is meta description">
-    <meta name="author" content="Themefisher">
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/x-icon">
-  
-    <!-- theme meta -->
-    <meta name="theme-name" content="reporter" />
+    <meta name="description" content="Situs berita terkini dan terpercaya seputar teknologi, jaringan, internet, dan komputer.">
+    <meta name="author" content="AQT Network">
+    <link rel="shortcut icon" href="{{asset('assets/images/ll.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets/images/ll.png')}}" type="image/x-icon">
   
     <!-- # Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

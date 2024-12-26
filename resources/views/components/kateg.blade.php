@@ -8,61 +8,8 @@
             /* Set a fixed height or use auto to preserve aspect ratio */
         }
     </style>
-    <div class="col-12 mb-4">
 
-        @php
-            // Clean content by removing <figure> tags first
-            $cleaned_content1 = preg_replace('/<figure.*?<\/figure>/s', '', $lt->isi ?? '');
-
-            // Count words
-            $word_count1 = str_word_count(strip_tags($cleaned_content1));
-
-            // Average words per minute (you can adjust this value based on your preference)
-            $words_per_minutes = 200;
-
-            // Estimate reading time in minutes
-            $read_time1 = ceil($word_count1 / $words_per_minutes);
-        @endphp
-        <article class="card article-card">
-            <a href="{{ route('artikel', $lt->slug ?? '') }}">
-                <div class="card-image">
-                    <div class="post-info"> <span class="text-uppercase">{{ $lt->created_at ?? ''}}</span>
-                        <span class="text-uppercase">{{ $read_time1 }} minute{{ $read_time1 > 1 ? 's' : '' }}
-                            read</span>
-                    </div>
-                    @if(isset($lt->banner))
-                    <img loading="lazy" decoding="async" src="{{ asset('storage/' . $lt->banner) }}" alt="Post Thumbnail"
-                    class="w-100 img-fluid">
-                    @else
-   
-@endif
-                    
-                </div>
-            </a>
-            <div class="card-body px-0 pb-1">
-                <ul class="post-meta mb-2">
-                    <li>
-                        @if (!empty($lt->tag) && is_array($lt->tag))
-                            @foreach ($lt->tag as $tag)
-                                <a href="{{route('kategori', $tag)}}">{{ $tag }}</a>
-                               
-                            @endforeach
-                        @else
-                            <p>No tags available.</p>
-                        @endif
-
-                    </li>
-                </ul>
-                <h2 class="h1"><a class="post-title" href="{{ route('artikel', $lt->slug ?? '') }}">{{ $lt->judul ?? ''}}</a></h2>
-                <p class="card-text"> {!! Str::limit(preg_replace('/<figure.*?<\/figure>/s', '', $lt->isi ?? ''), 300) !!}
-                </p>
-                <div class="content"> <a class="read-more-btn" href="{{ route('artikel', $lt->slug ?? '') }}">Read Full Article</a>
-                </div>
-            </div>
-        </article>
-    </div>
-
-    @foreach ($order as $item)
+    @forelse($artikel as $item)
         @php
             // Clean content by removing <figure> tags first
             $cleaned_content = preg_replace('/<figure.*?<\/figure>/s', '', $item->isi) ?? '';
@@ -84,7 +31,7 @@
             <article class="card article-card article-card-sm h-100">
                 <a href="{{ route('artikel', $item->slug ?? '') }}">
                     <div class="card-image">
-                        <div class="post-info"> <span class="text-uppercase">{{ $item->created_at ?? ''}}</span>
+                        <div class="post-info"> <span class="text-uppercase">{{ $item->created_at ?? '' }}</span>
                             <span class="text-uppercase">{{ $read_time }} minute{{ $read_time > 1 ? 's' : '' }}
                                 read</span>
                         </div>
@@ -97,23 +44,31 @@
                         <li>
                             @if (!empty($item->tag) && is_array($item->tag))
                                 @foreach ($item->tag as $tags)
-                                    <a href="{{route('kategori', $tags)}}">{{ $tags }}</a>
+                                    <a href="#">{{ $tags }}</a>
                                 @endforeach
                             @else
                                 <p>No tags available.</p>
                             @endif
                         </li>
                     </ul>
-                    <h2><a class="post-title" href="{{ route('artikel', $item->slug ?? '') }}">{{ $item->judul }}</a></h2>
+                    <h2><a class="post-title" href="{{ route('artikel', $item->slug ?? '') }}">{{ $item->judul }}</a>
+                    </h2>
                     <p class="card-text"> {!! Str::limit(preg_replace('/<figure.*?<\/figure>/s', '', $item->isi), 300) !!}
                     </p>
-                    <div class="content"> <a class="read-more-btn" href="{{ route('artikel', $item->slug ?? '') }}">Read Full Article</a>
+                    <div class="content"> <a class="read-more-btn" href="{{ route('artikel', $item->slug ?? '') }}">Read
+                            Full Article</a>
                     </div>
                 </div>
             </article>
         </div>
-    @endforeach
-    <div class="col-12">
+    @empty
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                <strong>Maaf!</strong> Artikel tidak ditemukan.
+            </div>
+        </div>
+    @endforelse
+    {{-- <div class="col-12">
         <div class="row">
             <div class="col-12">
                 <nav class="mt-4">
@@ -151,5 +106,5 @@
                 </nav>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
