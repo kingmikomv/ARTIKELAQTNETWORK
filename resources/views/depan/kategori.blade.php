@@ -4,7 +4,7 @@
 <x-head />
 <body>
 
-    <x-header :categories="$categories"/>
+  <x-header :categories="$categories" :menus="$menus" :submenu="$submenu" />
   <main>
     <section class="section">
       <div class="container">

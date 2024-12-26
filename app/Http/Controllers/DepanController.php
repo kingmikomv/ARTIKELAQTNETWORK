@@ -52,7 +52,7 @@ class DepanController extends Controller
     function kategori($slug_tag)
     {
         // Cari artikel di mana kolom 'tag' mengandung "Mikrotik Dasar"
-        $artikel = Artikel::whereJsonContains('tag', $slug_tag)->get();
+        $artikel = Artikel::whereJsonContains('tag', $slug_tag)->paginate(6);
 
         $datatag = Tag::where('tag', $slug_tag)->first();
         $tambah = Tag::where('tag', $slug_tag)->update([
