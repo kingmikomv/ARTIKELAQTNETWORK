@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Artikel;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,11 @@ class DepanController extends Controller
         $artikel = \App\Models\Artikel::latest()->first();
         $lt = Artikel::latest()->limit(1)->first();
         $order = Artikel::orderBy('id', 'desc')->limit(4)->get();
-        return view('depan.index', compact('artikel', 'lt', 'order'));
+
+        $randartikel = Artikel::inRandomOrder()->limit(6)->get();
+        $categories = Tag::all();
+
+        return view('depan.index', compact('artikel', 'lt', 'order', 'randartikel', 'categories'));
     }
     function artikel($slug)
     {
@@ -20,7 +25,12 @@ class DepanController extends Controller
         $tambah = Artikel::where('slug', $slug)->update([
             'view_artikel' => $artikel->view_artikel + 1
         ]);
-        //dd($artikel);
-       return view('depan.artikel', compact('artikel'));
+        $randartikel = Artikel::inRandomOrder()->limit(6)->get();
+     
+        $categories = Tag::all();
+
+        //dd($tags);
+
+        return view('depan.artikel', compact('artikel', 'randartikel', 'categories'));
     }
 }

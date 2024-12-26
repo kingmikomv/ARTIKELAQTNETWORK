@@ -19,4 +19,5 @@ class Artikel extends Model
          $this->attributes['judul'] = $value;
          $this->attributes['slug'] = Str::slug($value, '_')."_".Str::random(6); // Mengubah spasi menjadi garis bawah pada slug
      }
+
 }

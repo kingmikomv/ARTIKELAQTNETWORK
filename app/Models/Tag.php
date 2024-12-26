@@ -15,4 +15,5 @@ class Tag extends Model
         $this->attributes['tag'] = $value;
         $this->attributes['slug_tag'] = Str::slug($value, '_'); // Mengubah spasi menjadi garis bawah pada slug
     }
+   
 }

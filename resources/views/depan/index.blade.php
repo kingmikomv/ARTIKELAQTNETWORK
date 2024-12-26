@@ -15,7 +15,7 @@
           <div class="col-lg-8 mb-5 mb-lg-0">
             <x-main-article :lt="$lt" :order="$order"/>
           </div>
-            <x-sidebar />
+            <x-sidebar :randartikel="$randartikel" :categories="$categories"/>
         </div>
       </div>
     </section>

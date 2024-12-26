@@ -81,7 +81,7 @@
 
         <div class="col-md-6 mb-4">
             <article class="card article-card article-card-sm h-100">
-                <a href="article.html">
+                <a href="{{ route('artikel', $item->slug) }}">
                     <div class="card-image">
                         <div class="post-info"> <span class="text-uppercase">{{ $item->created_at ?? ''}}</span>
                             <span class="text-uppercase">{{ $read_time }} minute{{ $read_time > 1 ? 's' : '' }}
@@ -103,10 +103,10 @@
                             @endif
                         </li>
                     </ul>
-                    <h2><a class="post-title" href="">{{ $item->judul }}</a></h2>
+                    <h2><a class="post-title" href="{{ route('artikel', $item->slug) }}">{{ $item->judul }}</a></h2>
                     <p class="card-text"> {!! Str::limit(preg_replace('/<figure.*?<\/figure>/s', '', $item->isi), 300) !!}
                     </p>
-                    <div class="content"> <a class="read-more-btn" href="">Read Full Article</a>
+                    <div class="content"> <a class="read-more-btn" href="{{ route('artikel', $item->slug) }}">Read Full Article</a>
                     </div>
                 </div>
             </article>
