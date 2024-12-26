@@ -12,7 +12,7 @@ class DepanController extends Controller
     {
         $artikel = \App\Models\Artikel::latest()->first();
         $lt = Artikel::latest()->limit(1)->first();
-        $order = Artikel::orderBy('id', 'desc')->limit(4)->get();
+        $order = Artikel::orderBy('id', 'desc')->limit(4)->paginate(4);
         $randartikel = Artikel::inRandomOrder()->limit(6)->get();
         $categories = Tag::all();
         //HALAMAN
@@ -28,6 +28,8 @@ class DepanController extends Controller
         //dd($submenu);
         return view('depan.index', compact('artikel', 'lt', 'order', 'randartikel', 'categories', 'submenu', 'menus'));
     }
+  
+
     function artikel($slug)
     {
         $artikel = Artikel::where('slug', $slug)->first();

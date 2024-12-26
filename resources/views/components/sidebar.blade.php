@@ -1,19 +1,6 @@
 <div class="col-lg-4">
   <div class="widget-blocks">
     <div class="row">
-      <div class="col-lg-12">
-        <div class="widget">
-          <div class="widget-body">
-            <img loading="lazy" decoding="async" src="{{asset('assets/images/ll.png')}}" alt="About Me"
-              class="w-100 author-thumb-sm d-block">
-            <h2 class="widget-title my-3">AQT Network</h2>
-            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller.
-              Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="about.html"
-              class="btn btn-sm btn-outline-primary">Know
-              More</a>
-          </div>
-        </div>
-      </div>
       <div class="col-lg-12 col-md-6">
         <div class="widget">
           <h2 class="section-title mb-3">Recommended</h2>
