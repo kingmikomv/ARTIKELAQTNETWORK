@@ -50,10 +50,13 @@ class ArtikelResource extends Resource
                     ->columnSpan('full') // Memperluas elemen agar selebar kolom
                     ->reactive(),
 
-                TextInput::make('slug')
+                    TextInput::make('slug')
                     ->label('Slug')
                     ->hidden()
-                    ->default(fn($get) => Str::slug($get('judul'), '-') . '-' . Str::random(6)),
+                    ->default(fn ($get) => Str::slug($get('judul'), '-') . '-' . Str::random(6)) // Hanya untuk default nilai saat membuat
+                    ->disabled(fn ($record) => $record !== null), // Nonaktifkan perubahan saat update                
+
+                    
 
                 RichEditor::make('isi')
                     ->label('Isi')
