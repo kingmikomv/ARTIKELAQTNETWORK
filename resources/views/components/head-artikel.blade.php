@@ -15,7 +15,7 @@
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="{{ $artikel->judul }}">
     <meta name="og:description" content="{!! Str::limit(strip_tags(preg_replace('/<figure.*?<\/figure>/s', '', $artikel->isi ?? '')), 40) !!}">
-    <meta property="og:image" content="{{ asset('assets/images/artikel/' . $artikel->gambar) }}">
+    <meta property="og:image" content="{{ asset('assets/images/artikel/' . $artikel->banner) }}">
     <meta property="og:url" content="{{ url()->current() }}">
 
     <!-- # Google Fonts -->
